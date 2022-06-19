@@ -14,6 +14,20 @@ spring:
         jwt:
           jwk-set-uri: http://localhost:8180/auth/realms/alura-bank/protocol/openid-connect/certs
           issuer-uri: http://localhost:8180/auth/realms/alura-bank
+
+springdoc:
+  show-login-endpoint: true
+  auto-tag-classes: true
+
+
+  swagger-ui:
+    oauth:
+      client-id: test-pkce
+#      client-secret: Sa3YvsPJJcHJ4BkMEz0kOoOdxOtOgKhk
+      scopes: openid
+      use-pkce-with-authorization-code-grant: true
+
+
 keycloak:
   enabled: false
   auth-server-url: http://localhost:8180/auth
