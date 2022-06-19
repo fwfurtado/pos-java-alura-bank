@@ -8,6 +8,22 @@ spring:
     hibernate:
       ddl-auto: validate
     show-sql: true
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: http://localhost:8180/auth/realms/alura-bank/protocol/openid-connect/certs
+          issuer-uri: http://localhost:8180/auth/realms/alura-bank
+keycloak:
+  enabled: false
+  auth-server-url: http://localhost:8180/auth
+  realm: alura-bank
+  resource: test-password
+  credentials:
+    secret: Sa3YvsPJJcHJ4BkMEz0kOoOdxOtOgKhk
+  principal-attribute: preferred_username
+
+
 ---
 spring:
   config:
