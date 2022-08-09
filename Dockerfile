@@ -18,4 +18,4 @@ WORKDIR /app
 
 COPY --from=builder /workspace/target/alura-bank-0.0.1-SNAPSHOT.jar app.jar
 
-CMD ["java", "-jar", "app.jar"]
+CMD java -jar app.jar --server.port=$PORT
