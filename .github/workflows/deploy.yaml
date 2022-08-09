@@ -1,0 +1,23 @@
+name: Deploy
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: ${{secrets.HEROKU_APP_NAME}}
+          heroku_email: ${{secrets.HEROKU_EMAIL}}
+          justlogin: true
+      - name: Login Docker
+        run: heroku container:login --app ${{secrets.HEROKU_APP_NAME}}
+      - name: Push Docker Image
+        run: heroku container:push web --app ${{secrets.HEROKU_APP_NAME}}
+      - name: Deploy
+        run: heroku container:release web --app ${{secrets.HEROKU_APP_NAME}}
+
