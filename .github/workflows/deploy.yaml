@@ -17,7 +17,7 @@ jobs:
       - name: Login Docker
         run: heroku container:login
       - name: Push Docker Image
-        run: heroku container:push web
+        run: heroku container:push web --app ${{secrets.HEROKU_APP_NAME}}
       - name: Deploy
-        run: heroku container:release web
+        run: heroku container:release web --app ${{secrets.HEROKU_APP_NAME}}
 
