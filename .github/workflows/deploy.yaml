@@ -15,9 +15,9 @@ jobs:
           heroku_email: ${{secrets.HEROKU_EMAIL}}
           justlogin: true
       - name: Login Docker
-        run: heroku container:login --app ${{secrets.HEROKU_APP_NAME}}
+        run: heroku container:login
       - name: Push Docker Image
-        run: heroku container:push web --app ${{secrets.HEROKU_APP_NAME}}
+        run: heroku container:push web
       - name: Deploy
-        run: heroku container:release web --app ${{secrets.HEROKU_APP_NAME}}
+        run: heroku container:release web
 
